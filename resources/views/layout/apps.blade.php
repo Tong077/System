@@ -18,11 +18,10 @@
         @include('layout.nav')
         @include('layout.side')
         <div class="content-wrapper" style="overflow-y:auto; max-height: calc(100vh - 60px); padding: 20px;">
-            <div class="container">
-                <main class="py-4">
-                    @yield('content')
-                </main>
-            </div>
+            <main>
+                <x-toast />
+                @yield('content')
+            </main>
         </div>
         <footer class="main-footer">
             <strong><a href="#"></a></strong>
@@ -35,4 +34,5 @@
     @include('layout.script')
 
 </body>
+
 </html>
