@@ -10,5 +10,10 @@
         "@popperjs/core": "^2.11.8",
         "admin-lte": "^4.0.0-rc7",
         "bootstrap": "^5.3.8"
+    },
+    "devDependencies": {
+        "@popperjs/core": "^2.11.6",
+        "bootstrap": "^5.2.3",
+        "sass": "^1.56.1"
     }
 }
