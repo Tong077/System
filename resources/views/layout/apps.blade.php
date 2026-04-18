@@ -33,6 +33,8 @@
     </div>
     @include('layout.script')
 
-</body>
 
+
+   
+</body>
 </html>

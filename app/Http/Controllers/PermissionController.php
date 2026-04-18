@@ -32,16 +32,17 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'name' => 'required|unique:permissions,name',
-            'guard_name' => 'required',
+
         ]);
         Permission::create([
             'name' => $request->name,
             'guard_name' => 'web',
         ]);
-        if ($request->has('save_and_continue')) {
-            return redirect()->route('permissions.create')->with('success', 'Permission created successfully!');
+        if ($request->action === 'save_new') {
+            return  redirect()->route('permissions.create')->with('success', 'Permission Created Successfully');
         }
         return redirect()->route('permissions.index')->with('success', 'Permission created successfully!');
     }
