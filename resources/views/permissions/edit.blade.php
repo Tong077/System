@@ -1,6 +1,6 @@
 @extends('layout.apps')
 @section('content')
-    <div class="card">
+    <div class="card p-2">
         <div class="card-header">
             <h4 class="card-title">{{ __('Update permission') }}</h4>
         </div>

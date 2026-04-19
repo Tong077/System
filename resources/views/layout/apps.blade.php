@@ -7,7 +7,7 @@
     <title>System Control</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-
+    @include('layout.style')
     @include('layout.css')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -35,6 +35,7 @@
 
 
 
-   
+
 </body>
+
 </html>

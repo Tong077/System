@@ -1,35 +1,42 @@
 <aside class="main-sidebar sidebar-light-primary">
-    <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-        <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image">
-
+    <a href="#" class="brand-link">
+        <div class="brand-logo-wrap">
+            <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="Logo">
+        </div>
+        <span class="brand-text">CB<span>VH</span></span>
     </a>
-    <!-- Sidebar -->
+
     <div class="sidebar">
-
-        <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+                <li class="sidebar-section-label">Main</li>
 
                 <li class="nav-item">
-                    <a href="./index.html" class="nav-link active">
-
-                        <p>Dashboard v1</p>
+                    <a href="#" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                        <div class="nav-icon-box">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            Widgets
 
-                        </p>
-                    </a>
-                </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="fa-solid fa-users"></i>
+                        <div class="nav-icon-box">
+                            <i class="fas fa-th"></i>
+                        </div>
+                        <p>Widgets</p>
+                    </a>
+                </li>
+
+                <li class="sidebar-section-label">Configuration</li>
+
+                <li class="nav-item {{ request()->routeIs('users.*', 'roles.*', 'permissions.*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ request()->routeIs('users.*', 'roles.*', 'permissions.*') ? 'active' : '' }}">
+                        <div class="nav-icon-box">
+                            <i class="fas fa-users-cog"></i>
+                        </div>
                         <p>
                             Setting
                             <i class="fas fa-angle-left right"></i>
@@ -37,31 +44,35 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/mailbox/mailbox.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>User Management</p>
+                            <a href="{{ route('users.index') }}" class="nav-link {{ request()->routeIs('users.*') ? 'active' : '' }}">
+                                <span class="nav-sub-dot"></span>
+                                <p>User management</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('roles.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Role </p>
+                            <a href="{{ route('roles.index') }}" class="nav-link {{ request()->routeIs('roles.*') ? 'active' : '' }}">
+                                <span class="nav-sub-dot"></span>
+                                <p>Role</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('permissions.index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                            <a href="{{ route('permissions.index') }}" class="nav-link {{ request()->routeIs('permissions.*') ? 'active' : '' }}">
+                                <span class="nav-sub-dot"></span>
                                 <p>Permission</p>
                             </a>
                         </li>
                     </ul>
                 </li>
 
-
-
             </ul>
         </nav>
-        <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
+
+    <div class="sidebar-user-footer">
+        <div class="cbvh-avatar">AD</div>
+        <div>
+            <p class="user-name">Admin</p>
+            <p class="user-role">System administrator</p>
+        </div>
+    </div>
 </aside>

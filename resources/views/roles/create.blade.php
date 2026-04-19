@@ -1,6 +1,6 @@
 @extends('layout.apps')
 @section('content')
-    <div class="card">
+    <div class="card p-2">
         <div class="card-header">
             <h4 class="card-title">Add Roles</h4>
         </div>
