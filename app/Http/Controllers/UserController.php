@@ -47,7 +47,6 @@ class UserController extends Controller
             'email'    => 'required|email|max:255|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
             'roles'    => 'required|array',
-            'roles.*'  => 'string|exists:roles,name',
             'image'    => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
