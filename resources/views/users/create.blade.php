@@ -33,19 +33,29 @@
 
                     <div class="form-group col-md-6">
                         <label for="password">Password</label>
-                        <input type="password" name="password" id="password"
-                            class="form-control @error('password') is-invalid @enderror" required>
+                        <div class="input-group">
+                            <input type="password" name="password" id="password"
+                                class="form-control @error('password') is-invalid @enderror" required>
+                            <button class="btn btn-outline-secondary" type="button" id="togglePassword" style="border-color: #ced4da;">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
                         @error('password')
-                            <span class="invalid-feedback">{{ $message }}</span>
+                            <span class="invalid-feedback d-block">{{ $message }}</span>
                         @enderror
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="password_confirmation">Confirm Password</label>
-                        <input type="password" name="password_confirmation" id="password_confirmation"
-                            class="form-control @error('password_confirmation') is-invalid @enderror" required>
+                        <div class="input-group">
+                            <input type="password" name="password_confirmation" id="password_confirmation"
+                                class="form-control @error('password_confirmation') is-invalid @enderror" required>
+                            <button class="btn btn-outline-secondary" type="button" id="togglePasswordConfirm" style="border-color: #ced4da;">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
                         @error('password_confirmation')
-                            <span class="invalid-feedback">{{ $message }}</span>
+                            <span class="invalid-feedback d-block">{{ $message }}</span>
                         @enderror
                     </div>
 
@@ -74,9 +84,9 @@
                         @error('image')
                             <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
-                        <div class="mt-2">
+                        <div class="mt-3">
                             <img id="previewImage" src="#" alt="Preview"
-                                style="display:none; width:120px; height:120px; object-fit:cover; border-radius:8px;">
+                                style="display:none; width:120px; height:120px; object-fit:cover; border-radius:8px; border:1px solid #ddd; padding:4px;">
                         </div>
                     </div>
                 </div>
@@ -92,14 +102,39 @@
 
 @push('scripts')
 <script>
+    // Image preview
     document.getElementById('imageInput').addEventListener('change', function (event) {
         const file = event.target.files[0];
         const preview = document.getElementById('previewImage');
 
         if (file) {
-            preview.src = URL.createObjectURL(file);
-            preview.style.display = 'block';
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        } else {
+            preview.style.display = 'none';
         }
     });
+
+    // Password toggle
+    function setupPasswordToggle(toggleButtonId, passwordInputId) {
+        const toggleBtn = document.getElementById(toggleButtonId);
+        const passwordInput = document.getElementById(passwordInputId);
+
+        if (toggleBtn && passwordInput) {
+            toggleBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                const isPassword = passwordInput.type === 'password';
+                passwordInput.type = isPassword ? 'text' : 'password';
+                toggleBtn.innerHTML = isPassword ? '<i class="fas fa-eye-slash"></i>' : '<i class="fas fa-eye"></i>';
+            });
+        }
+    }
+
+    setupPasswordToggle('togglePassword', 'password');
+    setupPasswordToggle('togglePasswordConfirm', 'password_confirmation');
 </script>
 @endpush

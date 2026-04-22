@@ -15,15 +15,15 @@
                     <tr>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                         <td>
-                                        @if ($user->roles->count() > 0)
-                                            @foreach ($user->roles as $role)
-                                                <span class="badge bg-primary">{{ $role->name }}</span>
-                                            @endforeach
-                                        @else
-                                            <span class="text-muted">No role</span>
-                                        @endif
-                                    </td>
+                        <td>
+                            @if ($user->roles->count() > 0)
+                                @foreach ($user->roles as $role)
+                                    <span class="badge bg-primary">{{ $role->name }}</span>
+                                @endforeach
+                            @else
+                                <span class="text-muted">No role</span>
+                            @endif
+                        </td>
                         <td>
                             @if ($user->image)
                                 <img src="{{  $user->image_url }}" alt="Profile Image" width="50" height="50">
@@ -31,12 +31,14 @@
                                 N/A
                             @endif
                         <td class="text-right">
-                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-primary"><i
+                                    class="fa-solid fa-pen-to-square"></i></a>
                             <form action="{{ route('users.destroy', $user->id) }}" method="POST"
                                 class="d-inline delete-form">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                <button type="submit" class="btn btn-sm btn-danger"><i
+                                        class="fa-solid fa-trash"></i></button>
                             </form>
                         </td>
                     </tr>
