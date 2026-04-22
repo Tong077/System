@@ -24,7 +24,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::with('roles')->latest()->paginate(15);
+        $users = User::with('roles')->paginate(15);
         return view('users.index', compact('users'));
     }
 
@@ -42,12 +42,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+       
         $data = $request->validate([
             'name'     => 'required|string|max:50',
             'email'    => 'required|email|max:255|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
             'roles'    => 'required|array',
-            'image'    => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+      
         ]);
 
         try {

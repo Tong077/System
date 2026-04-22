@@ -1,4 +1,5 @@
 <!-- Bootstrap 5 CSS -->
+<link rel="stylesheet" href="https://unpkg.com/dropzone/dist/dropzone.css" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Font Awesome 6 -->
