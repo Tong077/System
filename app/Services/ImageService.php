@@ -45,7 +45,6 @@ class ImageService
     public function update(?string $oldPath, UploadedFile $newFile, string $folder): string
     {
         $newPath = $this->upload($newFile, $folder);
-
         // Delete old image only after successful upload
         $this->delete($oldPath);
 
@@ -76,6 +75,38 @@ class ImageService
 
         return $disk->url($path);
     }
+
+    /**
+     * Upload a base64-encoded image to storage.
+     */
+    public function uploadBase64(string $base64, string $folder): string
+    {
+        if (!preg_match('/^data:image\/(png|jpe?g|gif|webp);base64,(.+)$/i', $base64, $matches)) {
+            throw new \InvalidArgumentException('Invalid base64 image data.');
+        }
+
+        $mimeType = 'image/' . strtolower($matches[1]);
+        $data = base64_decode($matches[2]);
+
+        if ($data === false) {
+            throw new \InvalidArgumentException('Failed to decode base64 image data.');
+        }
+
+        if (!in_array($mimeType, $this->allowedMimeTypes, true)) {
+            throw new \InvalidArgumentException("Invalid image type [{$mimeType}]. Allowed: " . implode(', ', $this->allowedMimeTypes));
+        }
+
+        $extension = $matches[1] === 'jpeg' ? 'jpg' : strtolower($matches[1]);
+        $filename = Str::uuid() . '.' . $extension;
+        $path = $folder . '/' . $filename;
+
+        if (!Storage::disk($this->disk)->put($path, $data)) {
+            throw new \RuntimeException("Failed to upload image to [{$folder}].");
+        }
+
+        return $path;
+    }
+
     /**
      * Validate file type and size.
      *

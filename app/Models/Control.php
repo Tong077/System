@@ -4,12 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class System extends Model
+class Control extends Model
 {
-    //
-    protected $table = 'systems';
+    protected $table = 'controls';
     protected $guarded = [
         'id'
     ];
-    
 }

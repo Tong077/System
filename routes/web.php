@@ -5,6 +5,8 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ControlController;
+use App\Http\Controllers\LinkController;
 
 
 
@@ -14,8 +16,10 @@ Route::get('/', function () {
 
 
 
+Route::resource('controls', ControlController::class);
 Route::resource('permissions', PermissionController::class);
 Route::resource('roles', RoleController::class);
 Route::resource('users',UserController::class);
-Route::resource('links', \App\Http\Controllers\LinkController::class);
+Route::resource('links',LinkController::class);
+  
 Auth::routes();

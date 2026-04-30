@@ -33,7 +33,7 @@
     </div>
     @include('layout.script')
 
-
+     @stack('scripts')
 
 
 </body>
