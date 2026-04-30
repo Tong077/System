@@ -5,7 +5,6 @@
         </div>
         <span class="brand-text">CB<span>VH</span></span>
     </a>
-
     <div class="sidebar">
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -20,13 +19,12 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                 <li class="nav-item">
+                    <a href="{{ route('controls.index') }}" class="nav-link {{ request()->routeIs('controls') ? 'active' : '' }}">
                         <div class="nav-icon-box">
-                            <i class="fas fa-th"></i>
+<i class="fa-solid fa-sitemap"></i>
                         </div>
-                        <p>Widgets</p>
+                        <p>System Control</p>
                     </a>
                 </li>
 

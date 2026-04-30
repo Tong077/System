@@ -7,6 +7,7 @@
 
 <!-- OverlayScrollbars -->
 <link href="https://cdn.jsdelivr.net/npm/overlayscrollbars/css/OverlayScrollbars.min.css" rel="stylesheet">
+<link href="https://unpkg.com/cropperjs/dist/cropper.min.css" rel="stylesheet"/>
 
 <!-- AdminLTE -->
 <link href="https://cdn.jsdelivr.net/npm/admin-lte@3.2.0/dist/css/adminlte.min.css" rel="stylesheet">
