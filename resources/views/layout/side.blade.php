@@ -32,8 +32,8 @@
 
                 <li class="sidebar-section-label">Configuration</li>
 
-                <li class="nav-item {{ request()->routeIs('users.*', 'roles.*', 'permissions.*') ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link {{ request()->routeIs('users.*', 'roles.*', 'permissions.*') ? 'active' : '' }}">
+                <li class="nav-item {{ request()->routeIs('users.*', 'roles.*', 'permissions.*', 'links.*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ request()->routeIs('users.*', 'roles.*', 'permissions.*', 'links.*') ? 'active' : '' }}">
                         <div class="nav-icon-box">
                             <i class="fas fa-users-cog"></i>
                         </div>
@@ -59,6 +59,12 @@
                             <a href="{{ route('permissions.index') }}" class="nav-link {{ request()->routeIs('permissions.*') ? 'active' : '' }}">
                                 <span class="nav-sub-dot"></span>
                                 <p>Permission</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('links.index') }}" class="nav-link {{ request()->routeIs('links.*') ? 'active' : '' }}">
+                                <span class="nav-sub-dot"></span>
+                                <p>Link management</p>
                             </a>
                         </li>
                     </ul>

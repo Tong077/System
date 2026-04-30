@@ -91,6 +91,16 @@
             </a>
         </li>
 
+        {{-- Sign Out --}}
+        <li class="nav-item">
+            <form method="POST" action="{{ route('logout') }}" class="d-inline">
+                @csrf
+                <button type="submit" class="btn btn-danger btn-sm ml-2">
+                    <i class="fas fa-sign-out-alt mr-1"></i> Sign out
+                </button>
+            </form>
+        </li>
+
         {{-- User pill --}}
         <li class="nav-item dropdown user-menu">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
@@ -132,12 +142,6 @@
                     <a href="#" class="btn btn-info btn-sm">
                         <i class="fas fa-user mr-1"></i> Profile
                     </a>
-                    <form method="POST" action="#" class="delete-form float-right">
-                        @csrf
-                        <button type="submit" class="btn btn-danger btn-sm">
-                            <i class="fas fa-sign-out-alt mr-1"></i> Sign out
-                        </button>
-                    </form>
                 </li>
             </ul>
         </li>

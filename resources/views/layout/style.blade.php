@@ -1,9 +1,9 @@
 <style>
     /* ============================================================
-   CBVH Global Stylesheet
-   Compatible with AdminLTE + Bootstrap 4 + Laravel Blade
-   Usage: @include('layout.css')
-    or <link rel="stylesheet" href="/css/cbvh.css">============================================================*/
+       CBVH Global Stylesheet
+       Compatible with AdminLTE + Bootstrap 4 + Laravel Blade
+       Usage: @include('layout.css')
+       or <link rel="stylesheet" href="/css/cbvh.css">============================================================*/
 
     /* ── Reset & Base ─────────────────────────────────────────── */
     *,
@@ -14,7 +14,7 @@
 
     body.hold-transition {
         background: #f8f9fa;
-        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        font-family: 'Google Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
         font-size: 14px;
         color: #333;
     }
@@ -528,7 +528,6 @@
         border-bottom: 1px solid #f0f0f0 !important;
         border-radius: 12px 12px 0 0 !important;
         padding: 16px 20px !important;
-        
     }
 
     .card-title {
@@ -566,6 +565,7 @@
         font-weight: 500 !important;
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         gap: 5px;
         transition: all 0.15s;
     }
@@ -686,6 +686,7 @@
     .badge-info,
     .bg-info {
         background: #e6f1fb !important;
+        border-color: #b5d4f4 !important;
         color: #0c447c !important;
     }
 
