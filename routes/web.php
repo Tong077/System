@@ -6,20 +6,23 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControlController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LinkController;
 
 
 
-Route::get('/', function () {
-    return view('layout.apps');
-})->middleware('auth');
+// Route::get('/', function () {
 
-
+//     return view('layout.apps');})->middleware('auth');
+Auth::routes();
+Route::middleware('auth')->group(function () {
+      Route::get('/',[HomeController::class,'index'])->name('Home');
+});
 
 Route::resource('controls', ControlController::class);
 Route::resource('permissions', PermissionController::class);
 Route::resource('roles', RoleController::class);
-Route::resource('users',UserController::class);
-Route::resource('links',LinkController::class);
-  
+Route::resource('users', UserController::class);
+Route::resource('links', LinkController::class);
+
 Auth::routes();

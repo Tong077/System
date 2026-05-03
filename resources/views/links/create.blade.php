@@ -49,7 +49,7 @@
                         @enderror
                     </div>
 
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-12">
                         <label for="imageInput">Image Profile</label>
                         <input type="file" name="image" id="imageInput"
                             class="form-control @error('image') is-invalid @enderror"

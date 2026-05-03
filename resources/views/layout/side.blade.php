@@ -19,19 +19,32 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                 <li class="nav-item">
-                    <a href="{{ route('controls.index') }}" class="nav-link {{ request()->routeIs('controls') ? 'active' : '' }}">
+                <li class="nav-item">
+                    {{-- <a href="{{ route('controls.index') }}"
+                        class="nav-link {{ request()->routeIs('controls') ? 'active' : '' }}">
                         <div class="nav-icon-box">
-<i class="fa-solid fa-sitemap"></i>
+                            <i class="fa-solid fa-sitemap"></i>
                         </div>
                         <p>System Control</p>
+                    </a> --}}
+
+                    @if(auth()->user()->hasRole('Admin') || auth()->user()->can('link.view'))
+                    <a href="{{ route('links.index') }}"
+                        class="nav-link {{ request()->routeIs('links.*') ? 'active' : '' }}">
+                        <div class="nav-icon-box">
+                            <i class="fa-solid fa-sitemap"></i>
+                        </div>
+                        <p>Link management</p>
                     </a>
+                    @endcan
                 </li>
 
                 <li class="sidebar-section-label">Configuration</li>
 
-                <li class="nav-item {{ request()->routeIs('users.*', 'roles.*', 'permissions.*', 'links.*') ? 'menu-open' : '' }}">
-                    <a href="#" class="nav-link {{ request()->routeIs('users.*', 'roles.*', 'permissions.*', 'links.*') ? 'active' : '' }}">
+                <li
+                    class="nav-item {{ request()->routeIs('users.*', 'roles.*', 'permissions.*', ) ? 'menu-open' : '' }}">
+                    <a href="#"
+                        class="nav-link {{ request()->routeIs('users.*', 'roles.*', 'permissions.*', ) ? 'active' : '' }}">
                         <div class="nav-icon-box">
                             <i class="fas fa-users-cog"></i>
                         </div>
@@ -42,29 +55,28 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('users.index') }}" class="nav-link {{ request()->routeIs('users.*') ? 'active' : '' }}">
+                            <a href="{{ route('users.index') }}"
+                                class="nav-link {{ request()->routeIs('users.*') ? 'active' : '' }}">
                                 <span class="nav-sub-dot"></span>
                                 <p>User management</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('roles.index') }}" class="nav-link {{ request()->routeIs('roles.*') ? 'active' : '' }}">
+                            <a href="{{ route('roles.index') }}"
+                                class="nav-link {{ request()->routeIs('roles.*') ? 'active' : '' }}">
                                 <span class="nav-sub-dot"></span>
                                 <p>Role</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('permissions.index') }}" class="nav-link {{ request()->routeIs('permissions.*') ? 'active' : '' }}">
+                            <a href="{{ route('permissions.index') }}"
+                                class="nav-link {{ request()->routeIs('permissions.*') ? 'active' : '' }}">
                                 <span class="nav-sub-dot"></span>
                                 <p>Permission</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('links.index') }}" class="nav-link {{ request()->routeIs('links.*') ? 'active' : '' }}">
-                                <span class="nav-sub-dot"></span>
-                                <p>Link management</p>
-                            </a>
-                        </li>
+
+
                     </ul>
                 </li>
 

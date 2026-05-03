@@ -48,7 +48,7 @@ class UserController extends Controller
             'email'    => 'required|email|max:255|unique:users,email',
             'password' => 'required|string|min:8|confirmed',
             'roles'    => 'required|array',
-      
+            'image'    => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
         ]);
 
         try {
@@ -107,7 +107,8 @@ class UserController extends Controller
         $data = $request->validate([
             'name'     => 'nullable|string|max:50',
             'email'    => 'nullable|email|max:255|unique:users,email,' . $user->id,
-            'password' => 'nullable|string|min:8|confirmed',
+            'password' => 'nullable|string|min:8',
+            'password_confirmation' => 'nullable|same:password',
             'roles'    => 'required|array',
             'roles.*'  => 'string|exists:roles,name',
             'image'    => 'nullable|image|mimes:jpeg,png,jpg,gif,webp',
@@ -115,11 +116,11 @@ class UserController extends Controller
 
         try {
             // Hash password only if provided
-            if (!empty($data['password'])) {
-                $data['password'] = Hash::make($data['password']);
-            } else {
-                unset($data['password']);
-            }
+           if (!empty(trim($data['password'] ?? ''))) {
+                    $data['password'] = Hash::make($data['password']);
+                } else {
+                    unset($data['password']);
+                }
 
             // Replace image if a new one is uploaded
             if ($request->hasFile('image')) {

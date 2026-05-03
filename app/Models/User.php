@@ -33,9 +33,7 @@ class User extends Authenticatable
      * Accessor for the full URL of the user's image.
      */    public function getImageUrlAttribute(): ?string
     {
-        return $this->image
-            ? Storage::url($this->image)
-            : null;
+        return $this->image ? Storage::url($this->image) : null;
     }
     /**
      * The attributes that should be hidden for serialization.

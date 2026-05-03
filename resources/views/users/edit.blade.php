@@ -34,7 +34,7 @@
                     <div class="form-group col-md-6">
                         <label for="password">Password</label>
                         <div class="input-group">
-                            <input type="password" placeholder="Leave it blank if you don't want to update new password" name="password" id="password"
+                            <input type="password" autocomplete="new-password" placeholder="Leave it blank if you don't want to update new password" name="password" id="password"
                                 class="form-control @error('password') is-invalid @enderror" >
                             <button class="btn btn-outline-secondary" type="button" id="togglePassword" style="border-color: #ced4da;">
                                 <i class="fas fa-eye"></i>
@@ -48,7 +48,7 @@
                     <div class="form-group col-md-6">
                         <label for="password_confirmation">Confirm Password</label>
                         <div class="input-group">
-                            <input type="password" placeholder="Leave it blank if you don't want to update new password"  name="password_confirmation" id="password_confirmation"
+                            <input type="password" autocomplete="new-password placeholder="Leave it blank if you don't want to update new password"  name="password_confirmation" id="password_confirmation"
                                 class="form-control @error('password_confirmation') is-invalid @enderror" >
                             <button class="btn btn-outline-secondary" type="button" id="togglePasswordConfirm" style="border-color: #ced4da;">
                                 <i class="fas fa-eye"></i>

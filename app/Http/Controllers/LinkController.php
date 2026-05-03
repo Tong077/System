@@ -14,11 +14,15 @@ class LinkController extends Controller
     public function __construct(ImageService $imageService)
     {
         $this->imageService = $imageService;
+               $this->middleware('permission:link.view|link-create|link-edit|link-delete', ['only' => ['index', 'show']]);
+        $this->middleware('permission:link.create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:link.edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:link.delete', ['only' => ['destroy']]);
     }
 
     public function index()
     {
-        $links = Link::paginate(15);
+        $links = Link::all();
         return view('links.index', compact('links'));
     }
 
